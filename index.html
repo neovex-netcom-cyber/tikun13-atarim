@@ -6,254 +6,270 @@
 <title>התאמת אתר לתיקון 13 · נעם אזולאי</title>
 <meta name="description" content="התאמה טכנית של אתר עסקי קטן לתיקון 13: הודעת יידוע בטפסים, באנר עוגיות, טיוטת מדיניות פרטיות לבדיקת עורך דין, ומיפוי איסוף מידע. אינו ייעוץ משפטי.">
 <meta name="robots" content="index,follow">
-<meta name="theme-color" content="#05070d">
+<meta name="theme-color" content="#06080f">
 <style>
 @font-face{font-family:Heebo;src:url("fonts/heebo-var.woff2") format("woff2");font-weight:100 900;font-style:normal;font-display:swap}
 :root{
-  --navy:#05070d;--navy-2:#0a1020;--navy-3:#10182c;--ink:#0b1020;--paper:#f4f6fb;--paper-2:#e8ecf6;
-  --line:rgba(255,255,255,.1);--line-dark:rgba(11,16,32,.1);
-  --text:#f2f5fc;--muted:#9aa4bb;--muted-dark:#44506a;
-  --cyan:#22d3ee;--blue:#4d7cff;--lime:#d4ff3f;--lime-2:#c6f02a;
-  --max:1180px;--nav-h:72px;
-  --ease:cubic-bezier(.16,1,.3,1);
+  --bg:#06080f;--bg-2:#0a0e18;--bg-3:#101726;--elev:#121a2b;
+  --ink:#0c1222;--paper:#eef1f6;--paper-2:#f7f8fb;
+  --text:#eef1f7;--muted:#b4bcd0;--faint:#8b93a8;
+  --ink-muted:#3d4860;
+  --line:rgba(255,255,255,.1);--line-d:rgba(12,18,34,.1);
+  --cyan:#3fe0f0;--blue:#5b8cff;--lime:#d6ff4b;--lime-2:#c8f23a;
+  --max:1160px;--nav:64px;--ease:cubic-bezier(.16,1,.3,1);
+  --hair:inset 0 1px 0 rgba(255,255,255,.08);
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
-body{background:var(--navy);color:var(--text);font-family:Heebo,system-ui,sans-serif;font-size:17px;font-weight:400;line-height:1.55;letter-spacing:-.01em;text-rendering:optimizeLegibility;-webkit-font-smoothing:antialiased}
+body{background:var(--bg);color:var(--text);font-family:Heebo,system-ui,sans-serif;font-size:16.5px;font-weight:400;line-height:1.55;letter-spacing:-.011em;text-rendering:optimizeLegibility;-webkit-font-smoothing:antialiased}
 img,svg{display:block;max-width:100%}
 a{color:inherit}
-button,input{font:inherit}
+button{font:inherit;background:none;border:0;color:inherit;cursor:pointer}
 .skip{position:absolute;inset-inline-start:-999px}
 .skip:focus{position:static;display:inline-block;padding:8px 12px;background:var(--lime);color:#08100a;z-index:80}
 .wrap{width:min(var(--max),calc(100% - 48px));margin-inline:auto}
-/* ----- nav ----- */
-header{position:sticky;top:0;z-index:40;height:var(--nav-h);display:flex;align-items:center;background:rgba(5,7,13,.7);backdrop-filter:blur(16px) saturate(1.4);-webkit-backdrop-filter:blur(16px) saturate(1.4);border-bottom:1px solid transparent;transition:border-color .3s,background .3s}
-header.scrolled{border-bottom-color:var(--line);background:rgba(5,7,13,.88)}
-.nav{display:flex;align-items:center;justify-content:space-between;gap:20px;width:min(var(--max),calc(100% - 48px));margin-inline:auto}
-.brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--text);font-weight:700;font-size:15px;letter-spacing:-.02em}
-.brand small{display:block;font-weight:400;font-size:11.5px;color:var(--muted);letter-spacing:0}
-.mark{width:36px;height:36px;border-radius:10px;background:linear-gradient(135deg,var(--cyan),var(--blue));display:grid;place-items:center;font-weight:800;font-size:14px;color:#05070d;flex-shrink:0;box-shadow:0 0 24px rgba(34,211,238,.28)}
-.nav-links{display:flex;align-items:center;gap:8px}
-.nav-links a:not(.btn){color:var(--muted);text-decoration:none;font-size:14px;font-weight:500;padding:8px 10px;border-radius:8px}
-.nav-links a:not(.btn):hover{color:var(--text);background:rgba(255,255,255,.04)}
-/* ----- buttons ----- */
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:48px;padding:0 22px;border-radius:999px;text-decoration:none;font-weight:700;font-size:15px;border:1px solid transparent;cursor:pointer;transition:transform .2s var(--ease),background .2s,box-shadow .2s,border-color .2s}
+/* grain */
+.grain{pointer-events:none;position:absolute;inset:0;z-index:0;opacity:.035;mix-blend-mode:soft-light;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/></filter><rect width='160' height='160' filter='url(%23n)'/></svg>");background-size:160px 160px}
+/* nav */
+header{position:sticky;top:0;z-index:50;height:var(--nav);display:flex;align-items:center;background:rgba(6,8,15,.62);backdrop-filter:blur(18px) saturate(1.5);-webkit-backdrop-filter:blur(18px) saturate(1.5);border-bottom:1px solid transparent;transition:border-color .3s,background .3s}
+header.scrolled{border-bottom-color:rgba(255,255,255,.08);background:rgba(6,8,15,.86)}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:16px;width:min(var(--max),calc(100% - 48px));margin-inline:auto}
+.brand{display:flex;align-items:center;gap:11px;text-decoration:none;font-weight:700;font-size:14.5px;letter-spacing:-.02em}
+.brand small{display:block;font-weight:450;font-size:11px;color:var(--faint);letter-spacing:0;margin-top:1px}
+.mark{width:34px;height:34px;border-radius:9px;background:linear-gradient(145deg,#5b8cff 0%,#3fe0f0 100%);display:grid;place-items:center;flex-shrink:0;box-shadow:0 0 0 1px rgba(255,255,255,.14),0 8px 20px rgba(63,224,240,.22)}
+.mark span{font-weight:800;font-size:13px;color:#061018;letter-spacing:-.04em}
+.nav-links{display:flex;align-items:center;gap:2px}
+.nav-links a:not(.btn){color:var(--faint);text-decoration:none;font-size:13.5px;font-weight:500;padding:8px 11px;border-radius:8px}
+.nav-links a:not(.btn):hover{color:var(--text);background:rgba(255,255,255,.05)}
+/* buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:46px;padding:0 20px;border-radius:999px;text-decoration:none;font-weight:700;font-size:14.5px;border:1px solid transparent;transition:transform .2s var(--ease),background .2s,box-shadow .2s,border-color .2s}
 .btn:active{transform:translateY(1px)}
-.btn:focus-visible,.icon-btn:focus-visible,summary:focus-visible,.range:focus-visible{outline:2px solid var(--lime);outline-offset:3px}
-.btn-lime{background:var(--lime);color:#08100a;box-shadow:0 0 0 1px rgba(212,255,63,.12),0 8px 32px rgba(212,255,63,.22)}
-.btn-lime:hover{background:var(--lime-2);box-shadow:0 8px 40px rgba(212,255,63,.35)}
-.btn-ghost{background:transparent;color:var(--text);border-color:rgba(255,255,255,.16)}
-.btn-ghost:hover{background:rgba(255,255,255,.05);border-color:rgba(255,255,255,.28)}
-.btn-dark{background:var(--navy);color:var(--text)}
-.btn-dark:hover{background:#111827}
-.btn-lg{min-height:54px;padding:0 26px;font-size:16px}
-/* ----- hero ----- */
-.hero{position:relative;overflow:hidden;padding:72px 0 32px;min-height:calc(100svh - var(--nav-h));display:flex;align-items:center}
+.btn:focus-visible,summary:focus-visible,.tog button:focus-visible{outline:2px solid var(--lime);outline-offset:3px}
+.btn-lime{background:var(--lime);color:#10160a;box-shadow:0 1px 0 rgba(255,255,255,.25) inset,0 8px 28px rgba(214,255,75,.22)}
+.btn-lime:hover{background:var(--lime-2);box-shadow:0 1px 0 rgba(255,255,255,.25) inset,0 10px 36px rgba(214,255,75,.34)}
+.btn-ghost{background:rgba(255,255,255,.03);color:var(--text);border-color:rgba(255,255,255,.14);box-shadow:var(--hair)}
+.btn-ghost:hover{background:rgba(255,255,255,.07);border-color:rgba(255,255,255,.24)}
+.btn-lg{min-height:50px;padding:0 22px;font-size:15px}
+.nav .btn{min-height:38px;padding:0 16px;font-size:13.5px}
+/* hero */
+.hero{position:relative;overflow:hidden;padding:40px 0 56px;min-height:calc(100svh - var(--nav));display:flex;align-items:center}
 .hero-bg{position:absolute;inset:0;pointer-events:none}
-.hero-bg .orb{position:absolute;border-radius:50%;filter:blur(80px);will-change:transform}
-.orb-a{width:62vw;max-width:820px;height:62vw;max-height:820px;right:-10%;top:-18%;background:rgba(77,124,255,.32);animation:meshA 22s ease-in-out infinite}
-.orb-b{width:50vw;max-width:640px;height:50vw;max-height:640px;left:-8%;top:8%;background:rgba(34,211,238,.2);animation:meshB 26s ease-in-out infinite}
-.orb-c{width:40vw;max-width:520px;height:40vw;max-height:520px;left:30%;bottom:-22%;background:rgba(212,255,63,.08);animation:meshA 28s ease-in-out infinite reverse}
-.grid-fade{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.045) 1px,transparent 1px);background-size:72px 72px;mask-image:radial-gradient(ellipse 80% 70% at 50% 30%,#000 20%,transparent 75%);-webkit-mask-image:radial-gradient(ellipse 80% 70% at 50% 30%,#000 20%,transparent 75%)}
-@keyframes meshA{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(-7%,8%) scale(1.12)}}
-@keyframes meshB{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(8%,-6%) scale(1.08)}}
-.hero-grid{position:relative;z-index:1;display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center}
-.eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:600;color:#b8f7ff;background:rgba(34,211,238,.08);border:1px solid rgba(34,211,238,.22);padding:6px 12px 6px 10px;border-radius:999px;margin-bottom:22px;letter-spacing:.01em}
-.eyebrow i{width:7px;height:7px;border-radius:50%;background:var(--cyan);box-shadow:0 0 10px var(--cyan);flex-shrink:0}
-h1{font-weight:800;font-size:clamp(2.55rem,6.4vw,5.15rem);line-height:1.05;letter-spacing:-.045em;margin:0 0 20px}
-h1 .grad{background:linear-gradient(105deg,var(--cyan) 10%,var(--blue) 50%,var(--lime) 110%);-webkit-background-clip:text;background-clip:text;color:transparent}
-.lead{font-size:clamp(16px,1.4vw,19px);color:var(--muted);max-width:36em;margin:0 0 28px;font-weight:400;line-height:1.6}
-.actions{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:18px}
-.dates{font-size:13px;color:#c5cde0;max-width:44em;line-height:1.5}
-/* ----- browser mock ----- */
-.stage{position:relative;margin-inline:-8px}
-.glow-ring{position:absolute;inset:8% 6% 4%;background:radial-gradient(circle at 50% 40%,rgba(77,124,255,.35),rgba(34,211,238,.08) 50%,transparent 70%);filter:blur(20px);pointer-events:none}
-.browser{position:relative;background:#0e1424;border:1px solid rgba(255,255,255,.12);border-radius:16px;overflow:hidden;box-shadow:0 40px 80px -20px rgba(0,0,0,.7),0 0 0 1px rgba(255,255,255,.05),0 0 80px rgba(77,124,255,.16);transform:perspective(1400px) rotateY(10deg) rotateX(4deg);transform-origin:center right;transition:transform .6s var(--ease)}
-.stage:hover .browser{transform:perspective(1400px) rotateY(4deg) rotateX(1deg)}
-.browser-bar{display:flex;align-items:center;gap:10px;padding:10px 14px;background:#161d30;border-bottom:1px solid rgba(255,255,255,.06)}
-.dots{display:flex;gap:6px;direction:ltr}
-.dots i{width:10px;height:10px;border-radius:50%}
+.orb{position:absolute;border-radius:50%;filter:blur(90px);will-change:transform}
+.orb-a{width:70vw;max-width:780px;height:70vw;max-height:780px;right:-12%;top:-28%;background:rgba(91,140,255,.38);animation:meshA 24s ease-in-out infinite}
+.orb-b{width:48vw;max-width:560px;height:48vw;max-height:560px;left:-10%;top:18%;background:rgba(63,224,240,.2);animation:meshB 28s ease-in-out infinite}
+.orb-c{width:36vw;max-width:420px;height:36vw;max-height:420px;left:38%;bottom:-24%;background:rgba(214,255,75,.07);animation:meshA 30s ease-in-out infinite reverse}
+.grid-fade{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.04) 1px,transparent 1px);background-size:64px 64px;mask-image:radial-gradient(ellipse 70% 60% at 60% 35%,#000 10%,transparent 70%);-webkit-mask-image:radial-gradient(ellipse 70% 60% at 60% 35%,#000 10%,transparent 70%)}
+@keyframes meshA{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(-6%,7%) scale(1.1)}}
+@keyframes meshB{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(7%,-5%) scale(1.08)}}
+.hero-grid{position:relative;z-index:1;display:grid;grid-template-columns:1fr 1.02fr;gap:40px 48px;align-items:center}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:12.5px;font-weight:600;color:#c8fbff;background:rgba(63,224,240,.08);border:1px solid rgba(63,224,240,.22);padding:5px 11px 5px 9px;border-radius:999px;margin-bottom:18px;box-shadow:var(--hair)}
+.eyebrow i{width:6px;height:6px;border-radius:50%;background:var(--cyan);box-shadow:0 0 8px var(--cyan)}
+h1{font-weight:800;font-size:clamp(2.35rem,5.6vw,4.35rem);line-height:1.04;letter-spacing:-.048em;margin:0 0 16px}
+h1 .title-13{display:inline-flex;flex-direction:row;direction:rtl;align-items:baseline;gap:.2em}
+h1 .grad{background:linear-gradient(110deg,#3fe0f0 0%,#5b8cff 48%,#d6ff4b 120%);-webkit-background-clip:text;background-clip:text;color:transparent}
+.lead{font-size:17px;color:var(--muted);max-width:34em;margin:0 0 22px;line-height:1.6}
+.actions{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:22px}
+.trust-pills{display:flex;flex-wrap:wrap;gap:8px;list-style:none;padding:0}
+.trust-pills li{display:flex;flex-direction:column;gap:1px;padding:8px 12px;background:rgba(255,255,255,.035);border:1px solid rgba(255,255,255,.08);border-radius:12px;box-shadow:var(--hair);min-width:112px}
+.trust-pills strong{font-size:13.5px;font-weight:700;letter-spacing:-.02em;color:#fff}
+.trust-pills span{font-size:11px;color:var(--faint)}
+/* stage: browser + phone */
+.stage{position:relative;min-height:540px;padding-bottom:4px}
+.stage-glow{position:absolute;inset:8% 4% 0;background:radial-gradient(circle at 50% 40%,rgba(91,140,255,.32),rgba(63,224,240,.1) 45%,transparent 70%);filter:blur(24px);pointer-events:none}
+.browser{position:relative;background:#0c121f;border:1px solid rgba(255,255,255,.12);border-radius:18px;overflow:hidden;box-shadow:0 30px 70px -24px rgba(0,0,0,.75),0 0 0 1px rgba(255,255,255,.05),0 0 60px rgba(91,140,255,.12);margin-left:168px}
+.bb{display:flex;align-items:center;gap:10px;padding:9px 12px;background:linear-gradient(180deg,#171e2e,#131a28);border-bottom:1px solid rgba(255,255,255,.06);direction:ltr}
+.dots{display:flex;gap:6px}
+.dots i{width:9px;height:9px;border-radius:50%;box-shadow:0 0 0 .5px rgba(0,0,0,.25) inset}
 .dots i:nth-child(1){background:#ff5f57}
 .dots i:nth-child(2){background:#febc2e}
 .dots i:nth-child(3){background:#28c840}
-.url{flex:1;display:flex;align-items:center;gap:8px;background:#0a1020;border:1px solid rgba(255,255,255,.06);border-radius:8px;padding:6px 10px;font-size:11.5px;color:#8b95ab;font-weight:500;direction:ltr;text-align:left}
-.url svg{flex-shrink:0;opacity:.8}
-.browser-body{position:relative;background:linear-gradient(180deg,#f7f8fd,#eef1f8);color:var(--ink);padding:22px 22px 86px;min-height:390px;font-size:13.5px}
-.mini-kicker{font-size:11px;font-weight:700;color:#4d7cff;letter-spacing:.04em}
-.browser-body h4{font-size:22px;font-weight:800;letter-spacing:-.03em;margin:4px 0 16px;color:#0b1020}
-.fld{background:#fff;border:1px solid #d8deeb;border-radius:10px;padding:9px 12px;margin-bottom:8px;color:#9aa3b7;font-weight:500;box-shadow:0 1px 0 rgba(11,16,32,.02)}
-.consent{display:flex;gap:8px;align-items:flex-start;margin:12px 0 14px;font-size:12px;line-height:1.45;color:#243049;font-weight:500}
-.box{width:16px;height:16px;border-radius:4px;border:1.5px solid #4d7cff;background:#4d7cff;color:#fff;display:grid;place-items:center;flex-shrink:0;margin-top:1px}
+.url{flex:1;display:flex;align-items:center;gap:7px;background:#0a0f1a;border:1px solid rgba(255,255,255,.06);border-radius:7px;padding:5px 9px;font-size:11px;color:#8b93a8;font-weight:500;direction:ltr;text-align:left}
+.bbod{position:relative;background:linear-gradient(180deg,#f7f8fc,#eef1f7);color:var(--ink);padding:18px 18px 78px;min-height:400px}
+.mini-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px}
+.mini-brand{font-size:11px;font-weight:700;color:#3a6dff;letter-spacing:.02em}
+.mini-nav{display:flex;gap:8px;font-size:10px;color:#6b7388;font-weight:600}
+.bbod h4{font-size:20px;font-weight:800;letter-spacing:-.03em;margin:0 0 14px}
+.fl{margin:0 0 9px}
+.fl em{display:block;font-style:normal;font-size:10.5px;font-weight:650;color:#4a556c;margin:0 0 4px}
+.fl i{display:block;height:34px;background:#fff;border:1px solid #d5dbe8;border-radius:8px;box-shadow:0 1px 0 rgba(12,18,34,.03)}
+.fl.tall i{height:48px}
+.consent{display:flex;gap:8px;align-items:flex-start;margin:12px 0 12px;font-size:11px;line-height:1.45;color:#243049;font-weight:500}
+.box{width:15px;height:15px;border-radius:4px;border:1.5px solid #3a6dff;background:#3a6dff;display:grid;place-items:center;flex-shrink:0;margin-top:1px}
 .consent a{color:#2a5bde;text-decoration:underline;text-underline-offset:2px}
-.mini-send{display:inline-flex;background:#0b1020;color:#fff;border-radius:9px;padding:8px 16px;font-weight:700;font-size:12.5px}
-.cookie{position:absolute;right:12px;left:12px;bottom:12px;background:#0b1020;color:#eef1f8;border-radius:12px;padding:12px 14px;display:flex;align-items:center;justify-content:space-between;gap:12px;box-shadow:0 16px 40px rgba(11,16,32,.28);animation:cookieIn .9s .7s var(--ease) both;border:1px solid rgba(255,255,255,.08)}
-.cookie p{font-size:11.5px;line-height:1.4;color:#c9d0e0;margin:0}
-.cookie span{display:inline-flex;background:var(--lime);color:#08100a;border-radius:999px;padding:6px 12px;font-weight:800;font-size:11.5px;white-space:nowrap}
-@keyframes cookieIn{from{transform:translateY(120%);opacity:0}to{transform:translateY(0);opacity:1}}
-.badge{position:absolute;top:86px;bottom:auto;left:-22px;right:auto;z-index:3;display:flex;align-items:center;gap:8px;background:#0b1020;color:#fff;border:1px solid rgba(212,255,63,.35);border-radius:999px;padding:8px 14px 8px 10px;font-size:12.5px;font-weight:700;box-shadow:0 14px 40px rgba(0,0,0,.4),0 0 24px rgba(212,255,63,.2);animation:floaty 4.5s ease-in-out infinite}
-.badge svg{width:20px;height:20px}
-@keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}
-/* ----- trust ----- */
-.trust{position:relative;z-index:1;padding:8px 0 72px}
-.trust-row{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.08);border-radius:16px;overflow:hidden}
-.trust-row div{background:rgba(10,16,32,.85);padding:22px 20px;display:flex;flex-direction:column;gap:4px}
-.trust-row strong{font-size:15px;font-weight:700;letter-spacing:-.02em}
-.trust-row span{font-size:12.5px;color:var(--muted)}
-/* ----- sections shared ----- */
-.sec{padding:96px 0}
-.sec h2{font-weight:800;font-size:clamp(1.85rem,3.6vw,2.75rem);letter-spacing:-.04em;line-height:1.15;margin:0 0 10px}
-.sub{color:var(--muted);max-width:40em;margin:0 0 40px;font-size:17px}
+.mini-send{display:inline-flex;align-self:flex-start;background:#0c1222;color:#fff;border-radius:8px;padding:7px 14px;font-weight:700;font-size:11.5px}
+.cookie{position:absolute;right:10px;left:10px;bottom:10px;background:#0c1222;color:#eef1f7;border-radius:11px;padding:10px 12px;display:flex;align-items:center;justify-content:space-between;gap:10px;box-shadow:0 14px 32px rgba(12,18,34,.28);border:1px solid rgba(255,255,255,.08);animation:cookieIn .85s .55s var(--ease) both}.stage .browser .cookie{padding-inline-end:8px;padding-inline-start:12px;justify-content:flex-start;flex-direction:row-reverse}
+.cookie p{font-size:11px;line-height:1.4;color:#c5cde0;margin:0}
+.cookie b{display:inline-flex;background:var(--lime);color:#10160a;border-radius:999px;padding:5px 11px;font-weight:800;font-size:11px;white-space:nowrap}
+@keyframes cookieIn{from{transform:translateY(110%);opacity:0}to{transform:translateY(0);opacity:1}}
+/* phone */
+.phone{position:absolute;left:0;bottom:0;z-index:3;width:200px;padding:10px 9px 11px;background:linear-gradient(160deg,#2a2e38,#15171c);border-radius:32px;box-shadow:0 24px 50px -12px rgba(0,0,0,.65),0 0 0 1px rgba(255,255,255,.14),inset 0 1px 0 rgba(255,255,255,.18)}
+.phone-screen{background:linear-gradient(180deg,#f8f9fd,#eef1f7);color:var(--ink);border-radius:24px;overflow:hidden;min-height:360px;position:relative;padding:0 0 70px}
+.island{width:72px;height:18px;background:#0b0c10;border-radius:999px;margin:8px auto 0}
+.ph-status{display:flex;justify-content:space-between;padding:2px 14px 6px;font-size:9px;font-weight:700;color:#0c1222;direction:ltr}
+.ph-body{padding:8px 12px 0}
+.ph-body .mini-brand{font-size:9.5px}
+.ph-body h4{font-size:15px;margin:0 0 8px}
+.ph-body .fl{margin:0 0 6px}
+.ph-body .fl i{height:26px;border-radius:6px}
+.ph-body .fl.tall i{height:36px}
+.ph-body .consent{font-size:9px;margin:8px 0 8px}
+.ph-body .mini-send{font-size:10px;padding:5px 10px}
+.ph-body .cookie{padding:8px 8px;border-radius:10px;animation-delay:.9s}
+.ph-body .cookie p{font-size:9px}
+.ph-body .cookie b{font-size:9.5px;padding:4px 8px}
+/* sections */
+.sec{padding:88px 0;position:relative}
+.sec h2{font-weight:800;font-size:clamp(1.7rem,3.2vw,2.45rem);letter-spacing:-.04em;line-height:1.15;margin:0 0 8px}
+.sub{color:var(--faint);max-width:38em;margin:0 0 36px;font-size:16.5px}
 .light{background:var(--paper);color:var(--ink)}
-.light .sub{color:var(--muted-dark)}
-.dark{background:var(--navy);color:var(--text)}
-.kicker{font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#1a8a9c;margin-bottom:10px}
+.light .sub{color:var(--ink-muted)}
+.dark{background:var(--bg);color:var(--text)}
+.kicker{font-size:11.5px;font-weight:700;letter-spacing:.1em;color:#1b7f8c;margin-bottom:8px}
 .dark .kicker{color:var(--cyan)}
-/* ----- problem ----- */
-.probs{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-.prob{background:#fff;border:1px solid var(--line-dark);border-radius:22px;padding:28px 26px 30px;box-shadow:0 1px 0 rgba(11,16,32,.04),0 20px 40px -24px rgba(11,16,32,.2)}
-.ico{width:52px;height:52px;border-radius:16px;display:grid;place-items:center;margin-bottom:18px;background:linear-gradient(160deg,#ebfbff,#e7efff);border:1px solid #c5e4f0;box-shadow:0 8px 20px -12px rgba(26,74,138,.45)}
-.prob h3{font-size:18px;font-weight:800;letter-spacing:-.03em;margin:0 0 8px}
-.prob p{font-size:14.5px;line-height:1.6;color:var(--muted-dark)}
-/* ----- compare ----- */
+/* problem: editorial rows, not 3 twin cards */
+.rows{background:var(--paper-2);border:1px solid var(--line-d);border-radius:24px;overflow:hidden;box-shadow:0 16px 40px -28px rgba(12,18,34,.35)}
+.row{display:grid;grid-template-columns:64px 200px 1fr;gap:20px;align-items:start;padding:28px 32px;border-top:1px solid var(--line-d)}
+.row:first-child{border-top:0}
+.row .ico{width:48px;height:48px;border-radius:14px;display:grid;place-items:center;background:linear-gradient(160deg,#eafbff,#e8efff);border:1px solid #d2e4f2;color:#1a4a8a}
+.row h3{font-size:17px;font-weight:800;letter-spacing:-.03em;padding-top:12px}
+.row p{font-size:14.5px;line-height:1.65;color:var(--ink-muted);padding-top:10px}
+/* compare duo */
 .compare-head{display:flex;align-items:flex-end;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:28px}
-.tog{display:inline-flex;background:#e4e8f2;border-radius:999px;padding:4px;gap:2px}
-.tog button{border:0;background:transparent;color:#3e475a;min-height:40px;padding:0 18px;border-radius:999px;font-weight:700;font-size:14px;cursor:pointer}
-.tog button[aria-pressed="true"]{background:#0b1020;color:#fff;box-shadow:0 4px 12px rgba(11,16,32,.18)}
-.compare-frame{background:#fff;border:1px solid var(--line-dark);border-radius:20px;overflow:hidden;box-shadow:0 24px 60px -28px rgba(11,16,32,.3)}
-.cmp-bar{display:flex;align-items:center;gap:10px;padding:10px 14px;background:#f0f2f8;border-bottom:1px solid #e2e6f0}
-.cmp-stage{position:relative;min-height:420px}
-.pane{padding:28px 28px 24px}
-.pane h4{font-size:22px;font-weight:800;letter-spacing:-.03em;margin:2px 0 16px}
-.pane .hint{font-size:12.5px;margin-top:10px;color:var(--muted-dark)}
-.pane-after{display:none}
-.compare-frame.is-after .pane-before{display:none}
-.compare-frame.is-after .pane-after{display:block}
-.tag-pill{display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:700;border-radius:999px;padding:4px 10px;margin-bottom:8px}
+.tog{display:none;background:#e3e7f0;border-radius:999px;padding:4px;gap:2px}
+.tog button{min-height:38px;padding:0 16px;border-radius:999px;font-weight:700;font-size:13.5px;color:#3e475a}
+.tog button[aria-pressed="true"]{background:#0c1222;color:#fff;box-shadow:0 4px 12px rgba(12,18,34,.16)}
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:stretch}
+.duo-card{background:#fff;border:1px solid var(--line-d);border-radius:20px;overflow:hidden;box-shadow:0 20px 50px -30px rgba(12,18,34,.4);min-height:100%;display:flex;flex-direction:column}
+.duo-card .bb{background:#f0f2f8;border-bottom:1px solid #e2e6f0}
+.duo-card .bbod{min-height:0;padding:20px;position:relative;flex:1;display:flex;flex-direction:column}
+.duo-card .cookie{position:relative;right:auto;left:auto;bottom:auto;margin-top:14px;animation:none}
+.tag{display:inline-flex;align-items:center;gap:5px;font-size:10.5px;font-weight:700;border-radius:999px;padding:3px 9px;margin-bottom:8px;align-self:flex-start}
 .tag-bad{background:#fde8e8;color:#9b1c1c}
 .tag-ok{background:#e6f8ee;color:#0d6b3a}
-/* ----- bento ----- */
-.bento{display:grid;grid-template-columns:repeat(6,1fr);gap:16px}
-.tile{background:var(--navy-2);border:1px solid var(--line);border-radius:22px;padding:26px 24px;position:relative;overflow:hidden}
-.tile h3{font-size:18px;font-weight:800;letter-spacing:-.03em;margin:0 0 8px}
-.tile p{font-size:14.5px;color:var(--muted);line-height:1.55}
-.t-lg{grid-column:span 4;grid-row:span 2;background:linear-gradient(165deg,#101a32 0%,#0a1020 55%,#0d1a22 100%);padding:32px 30px;min-height:280px}
+.hint{font-size:12px;margin-top:auto;padding-top:12px;color:var(--ink-muted)}
+.duo-after{box-shadow:0 20px 50px -28px rgba(12,18,34,.45),0 0 0 1px rgba(91,140,255,.18)}
+/* bento */
+.bento{display:grid;grid-template-columns:repeat(6,1fr);gap:14px}
+.tile{background:var(--elev);border:1px solid var(--line);border-radius:20px;padding:24px 22px;position:relative;overflow:hidden;box-shadow:var(--hair);transition:transform .35s var(--ease),border-color .35s,box-shadow .35s}
+.tile:hover{transform:translateY(-3px);border-color:rgba(63,224,240,.28);box-shadow:var(--hair),0 18px 40px -24px rgba(0,0,0,.55)}
+.tile h3{font-size:16.5px;font-weight:800;letter-spacing:-.03em;margin:0 0 6px}
+.tile p{font-size:14px;color:var(--muted);line-height:1.55}
+.t-lg{grid-column:span 4;grid-row:span 2;background:linear-gradient(165deg,#152038 0%,#0c1220 60%,#0e1a22 100%);padding:28px 26px;min-height:260px}
 .t-sm{grid-column:span 2}
+.t-ban,.t-pol{grid-column:span 3}
 .t-md{grid-column:span 3}
-.t-full{grid-column:span 6;background:#0c1018;display:grid;grid-template-columns:160px 1fr;gap:16px;align-items:start}
+.t-full{grid-column:span 6;background:#0d111a;display:grid;grid-template-columns:140px 1fr;gap:12px 20px;align-items:start}
 .t-full h3{color:#ffb4b4}
-.t-full ul{display:grid;grid-template-columns:repeat(2,1fr);gap:8px 28px;margin:0;padding:0;list-style:none;color:var(--muted);font-size:14px}
-.t-full li{padding-inline-start:14px;position:relative}
-.t-full li::before{content:"";position:absolute;inset-inline-start:0;top:.55em;width:6px;height:6px;border-radius:50%;background:#ff7d7d}
-.node-map{display:flex;gap:14px;margin-top:28px;flex-wrap:wrap}
-.node{flex:1;min-width:110px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:14px;padding:14px;font-size:13px;font-weight:600}
-.node b{display:block;font-size:11px;color:var(--cyan);font-weight:700;margin-bottom:4px}
-.tile-ico{width:36px;height:36px;margin-bottom:14px;color:var(--cyan)}
-/* ----- process ----- */
-.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:0;position:relative}
-.steps::before{content:"";position:absolute;top:27px;right:16%;left:16%;height:1px;background:linear-gradient(90deg,transparent,rgba(34,211,238,.5),rgba(77,124,255,.5),transparent)}
-.step{padding:0 18px;text-align:right}
-.step-n{width:54px;height:54px;border-radius:50%;display:grid;place-items:center;font-weight:800;font-size:18px;background:var(--navy-3);border:1px solid rgba(34,211,238,.35);color:var(--cyan);margin-bottom:20px;position:relative;z-index:1;box-shadow:0 0 0 8px var(--navy),0 0 24px rgba(34,211,238,.25)}
-.step h3{font-size:20px;font-weight:800;letter-spacing:-.03em;margin:0 0 8px}
-.step p{color:var(--muted);font-size:15px;line-height:1.6}
-/* ----- price ----- */
-.price-sec{padding-top:24px;padding-bottom:110px}
-.price-card{position:relative;border-radius:28px;padding:48px 48px 44px;background:linear-gradient(#0c1426,#0c1426) padding-box,linear-gradient(135deg,rgba(77,124,255,.9),rgba(34,211,238,.8),rgba(212,255,63,.75)) border-box;border:1px solid transparent;box-shadow:0 40px 100px -30px rgba(77,124,255,.4),0 0 80px rgba(34,211,238,.08);display:grid;grid-template-columns:1.1fr .9fr;gap:32px;align-items:center;overflow:hidden}
-.price-card::before{content:"";position:absolute;inset:auto -10% -40% 40%;height:80%;background:radial-gradient(circle,rgba(212,255,63,.12),transparent 60%);pointer-events:none}
-.price-card .from{font-size:14px;font-weight:700;color:var(--cyan);margin-bottom:6px}
-.price-card .amt{font-size:clamp(3.4rem,7vw,5.6rem);font-weight:900;letter-spacing:-.05em;line-height:1;color:#fff}
-.price-card .vat{color:var(--muted);margin:10px 0 0;font-size:15px;max-width:36em}
+.t-full ul{display:grid;grid-template-columns:repeat(2,1fr);gap:8px 28px;margin:0;padding:0;list-style:none;color:var(--muted);font-size:13.5px}
+.t-full li{padding-inline-start:16px;position:relative}
+.t-full li::before{content:"";position:absolute;inset-inline-start:0;top:.55em;width:6px;height:1.5px;background:#ff8a8a;border-radius:2px}
+.node-map{display:flex;gap:10px;margin-top:22px;flex-wrap:wrap}
+.node{flex:1;min-width:104px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:12px;padding:12px;font-size:12.5px;font-weight:600;box-shadow:var(--hair)}
+.node b{display:block;font-size:10.5px;color:var(--cyan);font-weight:700;margin-bottom:3px}
+.tile-ico{width:32px;height:32px;margin-bottom:12px;color:var(--cyan)}
+/* process */
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;position:relative}
+.step{background:var(--elev);border:1px solid var(--line);border-radius:20px;padding:24px 22px 26px;box-shadow:var(--hair);position:relative}
+.step-n{width:44px;height:44px;border-radius:50%;display:grid;place-items:center;font-weight:800;font-size:16px;background:var(--bg-3);border:1px solid rgba(63,224,240,.4);color:var(--cyan);margin-bottom:16px;box-shadow:0 0 0 6px var(--bg),0 0 20px rgba(63,224,240,.2)}
+.step h3{font-size:18px;font-weight:800;letter-spacing:-.03em;margin:0 0 8px}
+.step p{color:var(--muted);font-size:14.5px;line-height:1.65}
+/* price */
+.price-sec{padding-top:16px;padding-bottom:100px}
+.price-card{position:relative;border-radius:28px;padding:44px 44px;background:linear-gradient(180deg,#121a2c 0%,#0c1322 100%) padding-box,linear-gradient(135deg,rgba(91,140,255,.95),rgba(63,224,240,.85),rgba(214,255,75,.8)) border-box;border:1px solid transparent;box-shadow:0 40px 90px -30px rgba(91,140,255,.38),0 0 80px rgba(63,224,240,.06);display:grid;grid-template-columns:1.05fr .95fr;gap:28px;align-items:center;overflow:hidden}
+.price-card::before{content:"";position:absolute;inset:auto -20% -50% 30%;height:80%;background:radial-gradient(circle,rgba(214,255,75,.11),transparent 60%);pointer-events:none}
+.price-card .from{font-size:13px;font-weight:700;color:var(--cyan);margin-bottom:4px}
+.price-card .amt{font-size:clamp(3.2rem,6.4vw,5.2rem);font-weight:900;letter-spacing:-.055em;line-height:.95;color:#fff;direction:ltr;unicode-bidi:isolate;display:inline-block}
+.price-card .vat{color:var(--muted);margin:10px 0 0;font-size:14.5px;max-width:36em}
 .price-side{position:relative;z-index:1}
-.price-side ul{list-style:none;margin:0 0 24px;color:#c5cde0;font-size:15px}
-.price-side li{display:flex;gap:10px;align-items:flex-start;margin:0 0 10px}
+.price-side ul{list-style:none;margin:0 0 22px;color:#c5cde0;font-size:14.5px}
+.price-side li{display:flex;gap:10px;align-items:flex-start;margin:0 0 9px}
 .price-side li svg{flex-shrink:0;margin-top:3px;color:var(--lime)}
-.contact-meta{margin-top:14px;font-size:14px;color:var(--muted)}
-.contact-meta a{color:var(--text);font-weight:600;text-decoration:none;border-bottom:1px solid rgba(255,255,255,.2)}
-/* ----- faq ----- */
-.faq{max-width:760px}
-details{border-bottom:1px solid var(--line-dark);padding:4px 0}
-summary{cursor:pointer;font-size:17px;font-weight:700;letter-spacing:-.02em;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:16px;min-height:56px}
+.contact-meta{margin-top:12px;font-size:13.5px;color:var(--faint)}
+.contact-meta a{color:var(--text);font-weight:600;text-decoration:none;border-bottom:1px solid rgba(255,255,255,.22)}
+/* faq */
+.faq-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:40px;align-items:start}
+.faq{background:var(--paper-2);border:1px solid var(--line-d);border-radius:20px;padding:6px 22px}
+details{border-bottom:1px solid var(--line-d);padding:2px 0}
+details:last-child{border-bottom:0}
+summary{cursor:pointer;font-size:15.5px;font-weight:700;letter-spacing:-.02em;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:16px;min-height:54px}
 summary::-webkit-details-marker{display:none}
-summary::after{content:"";width:22px;height:22px;flex-shrink:0;background:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230b1020' stroke-width='2.2' stroke-linecap='round'><path d='M5 12h14M12 5v14'/></svg>") center/18px no-repeat;transition:transform .25s var(--ease);opacity:.7}
+summary::after{content:"";width:22px;height:22px;flex-shrink:0;background:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230c1222' stroke-width='2.2' stroke-linecap='round'><path d='M5 12h14M12 5v14'/></svg>") center/16px no-repeat;transition:transform .25s var(--ease);opacity:.55}
 details[open] summary::after{transform:rotate(45deg)}
-details p{margin:0 0 16px;color:var(--muted-dark);font-size:15px;line-height:1.65;padding-left:32px}
-/* ----- disclaimer + privacy + footer ----- */
-.legal{padding:80px 0 40px}
-.note{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);border-inline-start:3px solid var(--lime);border-radius:16px;padding:22px 24px;color:#c5cde0;font-size:14.5px;line-height:1.65}
-.note strong{color:#fff;display:block;margin-bottom:6px;font-size:15px}
-.privacy{padding:48px 0 24px}
-.privacy h3{font-size:22px;font-weight:800;letter-spacing:-.03em;margin:0 0 14px}
-.privacy p{color:#8b95ab;font-size:14.5px;line-height:1.7;margin:0 0 12px;max-width:70em}
-foot,footer{padding:12px 0 48px;border-top:1px solid var(--line);color:#8b95ab;font-size:14px}
-.foot{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;align-items:end;padding-top:28px}
-.foot strong{display:block;color:#fff;font-size:16px;font-weight:800;margin-bottom:4px}
+details p{margin:0 0 16px;color:var(--ink-muted);font-size:14.5px;line-height:1.65}
+/* legal / footer */
+.legal{padding:72px 0 28px}
+.note{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);border-inline-start:3px solid var(--lime);border-radius:16px;padding:20px 22px;color:#c5cde0;font-size:14px;line-height:1.7;box-shadow:var(--hair)}
+.note strong{color:#fff;display:block;margin-bottom:6px;font-size:14.5px}
+.privacy{padding:40px 0 20px}
+.privacy h3{font-size:20px;font-weight:800;letter-spacing:-.03em;margin:0 0 12px}
+.privacy p{color:#8b93a8;font-size:14px;line-height:1.7;margin:0 0 10px;max-width:72em}
+footer{padding:8px 0 40px;border-top:1px solid var(--line);color:#8b93a8;font-size:13.5px}
+.foot{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;align-items:end;padding-top:26px}
+.foot strong{display:block;color:#fff;font-size:15.5px;font-weight:800;margin-bottom:4px}
 .foot a{color:#d7dce8;text-decoration:none}
 .foot a:hover{color:var(--lime)}
-/* ----- fab ----- */
-.fab{display:none;position:fixed;bottom:20px;left:18px;z-index:50;width:56px;height:56px;border-radius:50%;background:#25D366;color:#fff;align-items:center;justify-content:center;box-shadow:0 10px 28px rgba(37,211,102,.4);text-decoration:none;opacity:0;pointer-events:none;transform:translateY(8px);transition:opacity .25s,transform .25s}
-.fab:hover{transform:scale(1.05)}.fab.show{opacity:1;pointer-events:auto;transform:none}
-/* ----- reveal ----- */
-.reveal{opacity:0;transform:translateY(22px);transition:opacity .7s var(--ease),transform .7s var(--ease);transition-delay:var(--d,0s)}
+.foot-links{display:flex;flex-wrap:wrap;gap:8px 14px}
+/* fab */
+.fab{display:none;position:fixed;bottom:18px;left:16px;z-index:50;width:54px;height:54px;border-radius:50%;background:#25D366;color:#fff;align-items:center;justify-content:center;box-shadow:0 10px 26px rgba(37,211,102,.4);text-decoration:none;opacity:0;pointer-events:none;transform:translateY(8px);transition:opacity .25s,transform .25s}
+.fab.show{opacity:1;pointer-events:auto;transform:none}
+/* reveal */
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .65s var(--ease),transform .65s var(--ease);transition-delay:var(--d,0s)}
 .reveal.in{opacity:1;transform:none}
-
-h1 .title-13{display:inline-flex;flex-direction:row;direction:rtl;align-items:baseline;gap:.22em}
-.amt{direction:ltr;unicode-bidi:isolate;display:inline-block}
-.browser-bar,.cmp-bar{direction:ltr}
-.browser-bar .url,.cmp-bar .url{text-align:left}
-.t-ban,.t-pol{grid-column:span 3}
-/* ----- responsive ----- */
-@media (max-width:980px){
-  .hero{padding:40px 0 12px;min-height:0}
-  .hero-grid,.price-card,.t-full{grid-template-columns:1fr}
-  .probs,.steps{grid-template-columns:1fr;gap:14px}
-  .steps::before{display:none}
+/* responsive */
+@media (max-width:1020px){
+  .hero-grid,.price-card,.t-full,.faq-grid,.duo{grid-template-columns:1fr}
+  .row{grid-template-columns:52px 1fr;gap:12px 16px}
+  .row h3{padding-top:0;grid-column:2}
+  .row p{grid-column:1 / -1;padding-top:0}
+  .browser{margin-left:0}
+  .phone{left:12px;bottom:-12px}
+  .nav-links a:not(.btn){display:none}
+  .sec{padding:68px 0}
+  .wrap,.nav{width:min(var(--max),calc(100% - 32px))}
+  .tog{display:inline-flex}
+  .duo .duo-after{display:none}
+  .duo.is-after .duo-before{display:none}
+  .duo.is-after .duo-after{display:block}
   .bento{grid-template-columns:1fr 1fr}
   .t-lg,.t-sm,.t-md,.t-full,.t-ban,.t-pol{grid-column:span 2;grid-row:auto;min-height:0}
-  .t-full ul{grid-template-columns:1fr}
-  .trust-row{grid-template-columns:1fr 1fr}
-  .browser{transform:none}
-  .stage:hover .browser{transform:none}
-  .badge{left:12px;top:52px}
-  .price-card{padding:32px 24px}
-  .nav-links a:not(.btn){display:none}
-  .sec{padding:72px 0}
-  .wrap,.nav{width:min(var(--max),calc(100% - 32px))}
+  .steps{grid-template-columns:1fr}
+  .faq{padding:4px 16px}
+  .price-card{padding:28px 22px}
 }
 @media (max-width:620px){
-  .trust-row{grid-template-columns:1fr 1fr}
   .bento{grid-template-columns:1fr 1fr}
   .t-lg,.t-md,.t-full,.t-ban,.t-pol{grid-column:span 2}
   .t-sm{grid-column:span 1}
   .fab{display:flex}
-  footer{padding-bottom:108px}
-  h1{font-size:clamp(2.05rem,10.4vw,2.85rem)}
-  .browser-body{min-height:0;padding:18px 16px 88px}
-  .pane{padding:20px 18px}
-  .cmp-stage{min-height:0}
+  footer{padding-bottom:100px}
+  h1{font-size:clamp(2.05rem,10vw,2.75rem)}
+  .hero{padding:20px 0 28px;min-height:0;display:block;align-items:unset}
+  .stage{min-height:0}
+  .browser{display:none;margin-left:0}
+  .phone{position:relative;left:auto;bottom:auto;width:min(250px,82%);margin:8px auto 0;transform:none}
+  .actions{margin-bottom:14px}
   .actions .btn{width:100%}
-  .nav .btn{min-height:40px;padding:0 14px;font-size:13.5px}
-  .nav{width:min(var(--max),calc(100% - 24px))}
-  .wrap{width:min(var(--max),calc(100% - 28px))}
-  .sec{padding:56px 0}
-  .price-sec{padding-bottom:72px}
-  .trust{padding-bottom:48px}
-  .hero{padding:28px 0 8px}
-  .badge{left:10px;right:auto;top:64px;bottom:auto;font-size:11.5px;padding:6px 10px 6px 8px}
-  .brand small{font-size:10.5px}
-  .t-full{grid-template-columns:1fr;padding:22px 20px}
-  .steps{gap:8px}
-  .step{padding:0 0 8px;display:grid;grid-template-columns:54px 1fr;grid-template-rows:auto auto;gap:0 14px;align-items:center}
-  .step-n{margin-bottom:0;grid-row:1 / span 2;align-self:start}
-  .step h3{margin:8px 0 6px}
-  .steps .step + .step .step-n::before{content:"";position:absolute;top:-18px;left:50%;width:1px;height:18px;background:rgba(34,211,238,.35);transform:translateX(-50%)}
-  .price-card .amt{font-size:3.15rem}
+  .nav .btn{min-height:36px;padding:0 12px;font-size:13px}
+  .nav,.wrap{width:min(var(--max),calc(100% - 24px))}
+  .sec{padding:52px 0}
+  .price-sec{padding-bottom:64px}
+  .trust-pills{gap:6px;margin-bottom:8px}
+  .trust-pills li{min-width:calc(50% - 6px);flex:1 1 calc(50% - 6px);flex-direction:column;align-items:flex-start;gap:1px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:10px;padding:6px 9px;box-shadow:none}
+  .trust-pills strong{font-size:12.5px}
+  .trust-pills span{font-size:10.5px}
+  .t-full{grid-template-columns:1fr;padding:20px 18px}
+  .t-full ul{grid-template-columns:1fr}
+  .row{padding:22px 18px}
+  .price-card .amt{font-size:3rem}
+  .lead{font-size:15.5px;margin-bottom:16px}
+  .eyebrow{margin-bottom:14px}
 }
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
   .reveal{opacity:1;transform:none;transition:none}
-  .orb-a,.orb-b,.orb-c,.badge,.cookie{animation:none!important}
+  .orb,.cookie{animation:none!important}
   .cookie{opacity:1;transform:none}
-  .browser,.stage:hover .browser{transform:none;transition:none}
-  .btn{transition:none}
+  .tile,.btn,.fab{transition:none}
 }
 </style>
 </head>
@@ -262,7 +278,7 @@ h1 .title-13{display:inline-flex;flex-direction:row;direction:rtl;align-items:ba
 <header id="site-header">
   <div class="nav">
     <a class="brand" href="#top">
-      <span class="mark" aria-hidden="true">13</span>
+      <span class="mark" aria-hidden="true"><span>13</span></span>
       <span>התאמת אתר לתיקון 13<small>עבודה טכנית · נעם אזולאי</small></span>
     </a>
     <nav class="nav-links" aria-label="ניווט">
@@ -282,6 +298,7 @@ h1 .title-13{display:inline-flex;flex-direction:row;direction:rtl;align-items:ba
     <span class="orb orb-b"></span>
     <span class="orb orb-c"></span>
     <span class="grid-fade"></span>
+    <span class="grain"></span>
   </div>
   <div class="wrap hero-grid">
     <div>
@@ -292,56 +309,51 @@ h1 .title-13{display:inline-flex;flex-direction:row;direction:rtl;align-items:ba
         <a class="btn btn-lime btn-lg" href="https://wa.me/972508228996?text=%D7%A9%D7%9C%D7%95%D7%9D%2C%20%D7%90%D7%A0%D7%99%20%D7%9E%D7%A2%D7%95%D7%A0%D7%99%D7%99%D7%9F%20%D7%91%D7%91%D7%93%D7%99%D7%A7%D7%94%20%D7%A8%D7%90%D7%A9%D7%95%D7%A0%D7%99%D7%AA%20%D7%97%D7%99%D7%A0%D7%9E%D7%99%D7%AA%20%D7%9C%D7%94%D7%AA%D7%90%D7%9E%D7%94%20%D7%98%D7%9B%D7%A0%D7%99%D7%AA%20%D7%A9%D7%9C%20%D7%94%D7%90%D7%AA%D7%A8%20%D7%9C%D7%AA%D7%99%D7%A7%D7%95%D7%9F%2013.">בקשו בדיקה ראשונית חינם</a>
         <a class="btn btn-ghost btn-lg" href="#process">איך זה עובד</a>
       </div>
-      <p class="dates">תיקון 13 לחוק הגנת הפרטיות אושר בכנסת ב-5 באוגוסט 2024, פורסם ברשומות ב-14 באוגוסט 2024, ונכנס לתוקף ב-14 באוגוסט 2025.</p>
+      <ul class="trust-pills">
+        <li><strong>5.8.2024</strong><span>אושר בכנסת</span></li>
+        <li><strong>14.8.2024</strong><span>פורסם ברשומות</span></li>
+        <li><strong>14.8.2025</strong><span>נכנס לתוקף</span></li>
+        <li><strong>בדיקה חינם</strong><span>בלי התחייבות</span></li>
+      </ul>
     </div>
 
     <div class="stage" aria-hidden="true">
-      <div class="glow-ring"></div>
-      <div class="badge">
-        <svg viewBox="0 0 24 24" fill="none" width="20" height="20" aria-hidden="true">
-          <path d="M12 3.2l7.2 2.4v5.3c0 4.3-3 7.5-7.2 8.9-4.2-1.4-7.2-4.6-7.2-8.9V5.6L12 3.2z" fill="#d4ff3f"/>
-          <path d="M8.6 12.1l2.2 2.2 4.6-4.8" stroke="#08100a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-        הודעת יידוע פעילה
-      </div>
+      <div class="stage-glow"></div>
       <div class="browser">
-        <div class="browser-bar">
+        <div class="bb">
           <div class="dots"><i></i><i></i><i></i></div>
-          <div class="url">
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none"><rect x="5" y="11" width="14" height="10" rx="2" stroke="#7d889e" stroke-width="2"/><path d="M8 11V8a4 4 0 018 0v3" stroke="#7d889e" stroke-width="2" stroke-linecap="round"/></svg>
-            studio-etz.co.il/contact
-          </div>
+          <div class="url"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2" stroke="currentColor" stroke-width="2"/><path d="M8 11V8a4 4 0 018 0v3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg> studio-etz.co.il/contact</div>
         </div>
-        <div class="browser-body">
-          <div class="mini-kicker">סטודיו עץ וניר</div>
+        <div class="bbod">
+          <div class="mini-top"><span class="mini-brand">סטודיו עץ וניר</span><span class="mini-nav">עבודות · אודות · צור קשר</span></div>
           <h4>צרו קשר</h4>
-          <div class="fld">שם מלא</div>
-          <div class="fld">טלפון</div>
-          <div class="fld" style="min-height:52px">הודעה</div>
+          <div class="fl"><em>שם מלא</em><i></i></div>
+          <div class="fl"><em>טלפון</em><i></i></div>
+          <div class="fl tall"><em>הודעה</em><i></i></div>
           <div class="consent">
-            <span class="box">
-              <svg width="10" height="10" viewBox="0 0 12 12" fill="none"><path d="M2 6.2l2.6 2.6L10 3.2" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </span>
+            <span class="box"><svg width="10" height="10" viewBox="0 0 12 12" fill="none"><path d="M2 6.2l2.6 2.6L10 3.2" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
             <span>קראתי את <a href="#privacy" tabindex="-1">מדיניות הפרטיות</a> ואני מסכים/ה ליצירת קשר. אם לא אסכים, הפנייה לא תישלח.</span>
           </div>
           <span class="mini-send">שליחה</span>
-          <div class="cookie">
-            <p>כלי שיווק ומדידה ייטענו רק אחרי אישור.</p>
-            <span>אישור</span>
+          <div class="cookie"><p>כלי שיווק ומדידה ייטענו רק אחרי אישור.</p><b>אישור</b></div>
+        </div>
+      </div>
+      <div class="phone">
+        <div class="phone-screen">
+          <div class="island"></div>
+          <div class="ph-status"><span>9:41</span><span>LTE  ●●●</span></div>
+          <div class="ph-body">
+            <div class="mini-brand">סטודיו עץ וניר</div>
+            <h4>צרו קשר</h4>
+            <div class="fl"><em>שם מלא</em><i></i></div>
+            <div class="fl"><em>טלפון</em><i></i></div>
+            <div class="fl tall"><em>הודעה</em><i></i></div>
+            <div class="consent"><span class="box"><svg width="10" height="10" viewBox="0 0 12 12" fill="none"><path d="M2 6.2l2.6 2.6L10 3.2" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>קראתי את מדיניות הפרטיות ואני מסכים/ה ליצירת קשר.</span></div>
+            <span class="mini-send">שליחה</span>
+            <div class="cookie"><p>מדידה — רק אחרי אישור</p><b>אישור</b></div>
           </div>
         </div>
       </div>
-    </div>
-  </div>
-</section>
-
-<section class="trust">
-  <div class="wrap">
-    <div class="trust-row">
-      <div><strong>5.8.2024</strong><span>אושר בכנסת</span></div>
-      <div><strong>14.8.2024</strong><span>פורסם ברשומות</span></div>
-      <div><strong>14.8.2025</strong><span>נכנס לתוקף</span></div>
-      <div><strong>בדיקה חינם</strong><span>בלי התחייבות</span></div>
     </div>
   </div>
 </section>
@@ -351,38 +363,24 @@ h1 .title-13{display:inline-flex;flex-direction:row;direction:rtl;align-items:ba
     <p class="kicker">הפער באתר</p>
     <h2 class="reveal">מה חסר באתרים רבים</h2>
     <p class="sub reveal">עסקים רבים אוספים שם, טלפון ומייל בטופס פנייה — ולפעמים מפעילים כלי מדידה של צד שלישי — בלי הודעה ברורה ליד הטופס ובלי מדיניות פרטיות מעודכנת.</p>
-    <div class="probs">
-      <article class="prob reveal">
+    <div class="rows reveal">
+      <article class="row">
         <div class="ico" aria-hidden="true">
-          <svg width="26" height="26" viewBox="0 0 26 26" fill="none">
-            <rect x="4" y="3" width="18" height="20" rx="3" stroke="#1a4a8a" stroke-width="1.7"/>
-            <path d="M8 9h10M8 13h10M8 17h6" stroke="#1a4a8a" stroke-width="1.7" stroke-linecap="round"/>
-            <circle cx="19.5" cy="6.5" r="5.2" fill="#d4ff3f" stroke="#f4f6fb" stroke-width="1.5"/>
-            <path d="M19.5 4.6v2.3M19.5 8.6v.2" stroke="#08100a" stroke-width="1.6" stroke-linecap="round"/>
-          </svg>
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="18" rx="2.4"/><path d="M8 8h8M8 12h8M8 16h5"/><circle cx="18" cy="6" r="4.2" fill="#d6ff4b" stroke="#f7f8fb" stroke-width="1.4"/><path d="M18 4.6v1.8M18 8v.2" stroke="#10160a" stroke-width="1.5"/></svg>
         </div>
         <h3>טופס בלי יידוע</h3>
         <p>סעיף 11 לחוק, כנוסחו אחרי התיקון, מחייב הודעה בעת פנייה לקבלת מידע אישי לשם עיבודו — כולל מטרת האיסוף, תוצאת אי-ההסכמה, פרטי בעל השליטה, וזכויות עיון ותיקון.</p>
       </article>
-      <article class="prob reveal" style="--d:.08s">
+      <article class="row">
         <div class="ico" aria-hidden="true">
-          <svg width="26" height="26" viewBox="0 0 26 26" fill="none">
-            <circle cx="13" cy="13" r="3.2" stroke="#1a8a9c" stroke-width="1.7"/>
-            <circle cx="13" cy="13" r="7.2" stroke="#1a8a9c" stroke-width="1.5" opacity=".7"/>
-            <circle cx="13" cy="13" r="10.5" stroke="#1a8a9c" stroke-width="1.4" opacity=".35"/>
-            <path d="M13 2.5v2.2M13 21.3v2.2M2.5 13h2.2M21.3 13h2.2" stroke="#1a8a9c" stroke-width="1.5" stroke-linecap="round"/>
-          </svg>
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><circle cx="12" cy="12" r="2.6"/><circle cx="12" cy="12" r="6.2" opacity=".75"/><circle cx="12" cy="12" r="9.5" opacity=".4"/><path d="M12 2.2v2M12 19.8v2M2.2 12h2M19.8 12h2"/></svg>
         </div>
         <h3>כלי מדידה שנטענים לבד</h3>
         <p>כלי שיווק ומדידה של צד שלישי עלולים לאסוף מזהים מקוונים. אפשר להגדיר אותם כך שייטענו רק אחרי שהמבקר אישר — זו התאמה טכנית, לא «חותמת חוק».</p>
       </article>
-      <article class="prob reveal" style="--d:.16s">
+      <article class="row">
         <div class="ico" aria-hidden="true">
-          <svg width="26" height="26" viewBox="0 0 26 26" fill="none">
-            <path d="M7 3.5h8.2L22 10.3V22a2 2 0 01-2 2H7a2 2 0 01-2-2V5.5a2 2 0 012-2z" stroke="#1a4a8a" stroke-width="1.7" stroke-linejoin="round"/>
-            <path d="M15 3.7V10h6.4" stroke="#1a4a8a" stroke-width="1.7" stroke-linejoin="round"/>
-            <path d="M9.5 16.5l7 0M11.2 13.2l3.6 3.6 3.6-3.6" stroke="#c02323" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M7 3.5h7.2L20.5 10V21a1.8 1.8 0 01-1.8 1.8H7A1.8 1.8 0 015.2 21V5.3A1.8 1.8 0 017 3.5z"/><path d="M14.2 3.6V9.6H20"/><path d="M9 16.2h6M14.2 13.2L9.8 17.6" stroke="#c02323"/></svg>
         </div>
         <h3>מדיניות ישנה או חסרה</h3>
         <p>עמוד מדיניות פרטיות מעודכן עוזר לעמוד בחובת היידוע. הטיוטה שאני מכין היא תבנית בלבד, לבדיקה אצל עורך דין שלכם.</p>
@@ -391,7 +389,7 @@ h1 .title-13{display:inline-flex;flex-direction:row;direction:rtl;align-items:ba
   </div>
 </section>
 
-<section class="sec light" id="compare" style="padding-top:12px">
+<section class="sec light" id="compare" style="padding-top:8px">
   <div class="wrap">
     <div class="compare-head">
       <div>
@@ -404,55 +402,48 @@ h1 .title-13{display:inline-flex;flex-direction:row;direction:rtl;align-items:ba
         <button type="button" id="btn-after" aria-pressed="false">אחרי</button>
       </div>
     </div>
-    <div class="compare-frame reveal" id="compare-frame">
-      <div class="cmp-bar">
-        <div class="dots" aria-hidden="true"><i></i><i></i><i></i></div>
-        <div class="url" style="background:#fff">
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none"><rect x="5" y="11" width="14" height="10" rx="2" stroke="#7d889e" stroke-width="2"/><path d="M8 11V8a4 4 0 018 0v3" stroke="#7d889e" stroke-width="2" stroke-linecap="round"/></svg>
-          studio-etz.co.il/contact
-        </div>
-      </div>
-      <div class="cmp-stage">
-        <div class="pane pane-before">
-          <span class="tag-pill tag-bad">חסר יידוע ומדיניות</span>
+    <div class="duo reveal" id="compare-frame">
+      <article class="duo-card duo-before">
+        <div class="bb"><div class="dots"><i></i><i></i><i></i></div><div class="url" style="background:#fff;color:#6b7388"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2" stroke="currentColor" stroke-width="2"/><path d="M8 11V8a4 4 0 018 0v3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg> studio-etz.co.il/contact</div></div>
+        <div class="bbod">
+          <span class="tag tag-bad">חסר יידוע ומדיניות</span>
           <h4>צרו קשר</h4>
-          <div class="fld">שם מלא</div>
-          <div class="fld">טלפון</div>
-          <div class="fld" style="min-height:52px">הודעה</div>
+          <div class="fl"><em>שם מלא</em><i></i></div>
+          <div class="fl"><em>טלפון</em><i></i></div>
+          <div class="fl tall"><em>הודעה</em><i></i></div>
           <span class="mini-send">שליחה</span>
           <p class="hint">אין הודעת יידוע, אין קישור למדיניות פרטיות, ואין באנר שמונע טעינת כלי מדידה לפני אישור.</p>
         </div>
-        <div class="pane pane-after">
-          <span class="tag-pill tag-ok">הודעת יידוע, הסכמה ובאנר</span>
+      </article>
+      <article class="duo-card duo-after">
+        <div class="bb"><div class="dots"><i></i><i></i><i></i></div><div class="url" style="background:#fff;color:#6b7388"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2" stroke="currentColor" stroke-width="2"/><path d="M8 11V8a4 4 0 018 0v3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg> studio-etz.co.il/contact</div></div>
+        <div class="bbod">
+          <span class="tag tag-ok">הודעת יידוע, הסכמה ובאנר</span>
           <h4>צרו קשר</h4>
-          <div class="fld">שם מלא</div>
-          <div class="fld">טלפון</div>
-          <div class="fld" style="min-height:52px">הודעה</div>
+          <div class="fl"><em>שם מלא</em><i></i></div>
+          <div class="fl"><em>טלפון</em><i></i></div>
+          <div class="fl tall"><em>הודעה</em><i></i></div>
           <div class="consent">
-            <span class="box">
-              <svg width="10" height="10" viewBox="0 0 12 12" fill="none"><path d="M2 6.2l2.6 2.6L10 3.2" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </span>
+            <span class="box"><svg width="10" height="10" viewBox="0 0 12 12" fill="none"><path d="M2 6.2l2.6 2.6L10 3.2" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
             <span>אני מאשר/ת שקראתי את <a href="#privacy">מדיניות הפרטיות</a>. מטרת האיסוף: חזרה אליי בעניין הפנייה. בעל השליטה: הסטודיו. אם לא אסכים, הפנייה לא תישלח. יש זכויות עיון ותיקון.</span>
           </div>
           <span class="mini-send">שליחה</span>
-          <div class="cookie" style="position:relative;right:auto;left:auto;bottom:auto;margin-top:18px;animation:none">
-            <p>כלי שיווק ומדידה ייטענו רק אחרי אישור.</p>
-            <span>אישור</span>
-          </div>
+          <div class="cookie"><p>כלי שיווק ומדידה ייטענו רק אחרי אישור.</p><b>אישור</b></div>
         </div>
-      </div>
+      </article>
     </div>
   </div>
 </section>
 
 <section class="sec dark" id="included">
   <div class="wrap">
+    <div class="grain" style="position:absolute;inset:0;border-radius:0"></div>
     <p class="kicker">המסירה</p>
     <h2 class="reveal">מה כלול</h2>
     <p class="sub reveal">עבודה על האתר עצמו. בלי שרת חדש ובלי מנוי חודשי.</p>
     <div class="bento">
       <article class="tile t-lg reveal">
-        <svg class="tile-ico" viewBox="0 0 36 36" fill="none" aria-hidden="true"><rect x="3" y="5" width="14" height="10" rx="2" stroke="currentColor" stroke-width="1.8"/><rect x="19" y="5" width="14" height="10" rx="2" stroke="currentColor" stroke-width="1.8"/><rect x="3" y="21" width="14" height="10" rx="2" stroke="currentColor" stroke-width="1.8"/><rect x="19" y="21" width="14" height="10" rx="2" stroke="currentColor" stroke-width="1.8"/><path d="M17 10h2M10 15v6M26 15v6" stroke="currentColor" stroke-width="1.6"/></svg>
+        <svg class="tile-ico" viewBox="0 0 32 32" fill="none" aria-hidden="true"><rect x="3" y="4" width="12" height="9" rx="2" stroke="currentColor" stroke-width="1.7"/><rect x="17" y="4" width="12" height="9" rx="2" stroke="currentColor" stroke-width="1.7"/><rect x="3" y="19" width="12" height="9" rx="2" stroke="currentColor" stroke-width="1.7"/><rect x="17" y="19" width="12" height="9" rx="2" stroke="currentColor" stroke-width="1.7"/><path d="M15 8.5h2M9 13v6M23 13v6" stroke="currentColor" stroke-width="1.6"/></svg>
         <h3>מיפוי איסוף המידע באתר</h3>
         <p>מיפוי טפסים, כלי מדידה וספקי צד שלישי — כדי לדעת מה נאסף ואיפה זה קורה.</p>
         <div class="node-map" aria-hidden="true">
@@ -462,32 +453,32 @@ h1 .title-13{display:inline-flex;flex-direction:row;direction:rtl;align-items:ba
         </div>
       </article>
       <article class="tile t-sm reveal" style="--d:.06s">
-        <svg class="tile-ico" viewBox="0 0 36 36" fill="none" aria-hidden="true"><path d="M8 7h20v22H8z" stroke="currentColor" stroke-width="1.8" rx="2"/><path d="M12 13h12M12 18h12M12 23h7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+        <svg class="tile-ico" viewBox="0 0 32 32" fill="none" aria-hidden="true"><rect x="7" y="5" width="18" height="22" rx="2" stroke="currentColor" stroke-width="1.7"/><path d="M11 12h10M11 17h10M11 22h6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
         <h3>הודעת יידוע בטפסים</h3>
         <p>הודעה ליד כל טופס שאוסף מידע אישי, לפי חובת היידוע שבסעיף 11.</p>
       </article>
       <article class="tile t-sm reveal" style="--d:.1s">
-        <svg class="tile-ico" viewBox="0 0 36 36" fill="none" aria-hidden="true"><rect x="6" y="8" width="24" height="20" rx="3" stroke="currentColor" stroke-width="1.8"/><rect x="9" y="14" width="6" height="6" rx="1.2" fill="currentColor"/><path d="M18 16h10M18 20h7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+        <svg class="tile-ico" viewBox="0 0 32 32" fill="none" aria-hidden="true"><rect x="5" y="7" width="22" height="18" rx="3" stroke="currentColor" stroke-width="1.7"/><rect x="8" y="13" width="5.5" height="5.5" rx="1.2" fill="currentColor"/><path d="M16 15h8M16 19h6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
         <h3>תיבת הסכמה</h3>
         <p>תיבת הסכמה בטפסים, כשזה מתאים לאופן האיסוף.</p>
       </article>
       <article class="tile t-ban reveal">
-        <svg class="tile-ico" viewBox="0 0 36 36" fill="none" aria-hidden="true"><rect x="5" y="16" width="26" height="14" rx="3" stroke="currentColor" stroke-width="1.8"/><path d="M12 16v-3a6 6 0 0112 0v3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+        <svg class="tile-ico" viewBox="0 0 32 32" fill="none" aria-hidden="true"><rect x="4" y="14" width="24" height="13" rx="3" stroke="currentColor" stroke-width="1.7"/><path d="M11 14v-3a5 5 0 0110 0v3" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
         <h3>באנר עוגיות</h3>
         <p>באנר שטוען כלי שיווק ומדידה רק אחרי אישור. כלי טכני — לא «חובה מפורשת בתיקון».</p>
       </article>
       <article class="tile t-pol reveal" style="--d:.06s">
-        <svg class="tile-ico" viewBox="0 0 36 36" fill="none" aria-hidden="true"><path d="M10 6h11l9 9v15H10V6z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M21 6v9h9" stroke="currentColor" stroke-width="1.8"/></svg>
+        <svg class="tile-ico" viewBox="0 0 32 32" fill="none" aria-hidden="true"><path d="M9 5h10l8 8v14H9V5z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M19 5v8h8" stroke="currentColor" stroke-width="1.7"/></svg>
         <h3>טיוטת מדיניות</h3>
         <p>טיוטה בעברית, מסומנת במפורש כתבנית לבדיקת עורך דין.</p>
       </article>
       <article class="tile t-md reveal">
-        <svg class="tile-ico" viewBox="0 0 36 36" fill="none" aria-hidden="true"><path d="M8 18c0-5.5 4.5-10 10-10s10 4.5 10 10-4.5 10-10 10" stroke="currentColor" stroke-width="1.8"/><path d="M8 18h20M18 8c2.4 3.2 3.6 6.4 3.6 10S20.4 24.8 18 28c-2.4-3.2-3.6-6.4-3.6-10S15.6 11.2 18 8z" stroke="currentColor" stroke-width="1.6"/><path d="M14 27l-5 5 2.5.5.5 2.5 5-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <svg class="tile-ico" viewBox="0 0 32 32" fill="none" aria-hidden="true"><circle cx="16" cy="16" r="9" stroke="currentColor" stroke-width="1.7"/><path d="M7 16h18M16 7c2.2 3 3.3 6 3.3 9S18.2 22 16 25c-2.2-3-3.3-6-3.3-9S13.8 10 16 7z" stroke="currentColor" stroke-width="1.55"/><path d="M12 24l-4 4 2 .4.4 2 4-4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
         <h3>טפסים מאובטחים, נגישות בסיסית ו-HTTPS</h3>
         <p>בדיקת HTTPS והגשות בערוץ מאובטח, ותהליך פשוט לקבלת בקשות עיון ותיקון. התאמות נגישות בסיסיות לרכיבים האלה: מקלדת, תוויות וניגודיות.</p>
       </article>
       <article class="tile t-md reveal" style="--d:.06s">
-        <svg class="tile-ico" viewBox="0 0 36 36" fill="none" aria-hidden="true"><rect x="7" y="6" width="22" height="24" rx="2.5" stroke="currentColor" stroke-width="1.8"/><path d="M12 13h12M12 18h12M12 23h8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><circle cx="25" cy="25" r="6" fill="#0a1020" stroke="#d4ff3f" stroke-width="1.6"/><path d="M22.8 25.2l1.8 1.8 3.6-3.8" stroke="#d4ff3f" stroke-width="1.6" stroke-linecap="round"/></svg>
+        <svg class="tile-ico" viewBox="0 0 32 32" fill="none" aria-hidden="true"><rect x="6" y="5" width="20" height="22" rx="2.2" stroke="currentColor" stroke-width="1.7"/><path d="M11 12h10M11 16h10M11 20h7" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/><circle cx="22" cy="23" r="5.4" fill="#0c1220" stroke="#d6ff4b" stroke-width="1.5"/><path d="M20 23.1l1.6 1.6 3.2-3.4" stroke="#d6ff4b" stroke-width="1.5" stroke-linecap="round"/></svg>
         <h3>רשימת בדיקה בעברית</h3>
         <p>סיכום של מה שנבדק ומה הוטמע — למסירה מסודרת בסוף העבודה.</p>
       </article>
@@ -555,9 +546,11 @@ h1 .title-13{display:inline-flex;flex-direction:row;direction:rtl;align-items:ba
 </section>
 
 <section class="sec light" id="faq">
-  <div class="wrap">
-    <p class="kicker">שאלות</p>
-    <h2 class="reveal">שאלות נפוצות</h2>
+  <div class="wrap faq-grid">
+    <div>
+      <p class="kicker">שאלות</p>
+      <h2 class="reveal">שאלות נפוצות</h2>
+    </div>
     <div class="faq reveal">
       <details>
         <summary>האם זה ייעוץ משפטי?</summary>
@@ -587,7 +580,7 @@ h1 .title-13{display:inline-flex;flex-direction:row;direction:rtl;align-items:ba
   <div class="wrap">
     <div class="note reveal">
       <strong>הבהרה</strong>
-      העמוד הזה והשירות המתואר בו אינם ייעוץ משפטי, אינם חוות דעת ואינם מחליפים את חובות הארגון לפי הדין. נעם אזולאי אינו עורך דין. מומלץ להתייעץ עם עורך דין לקבלת חוות דעת משפטית, במיוחד לפני פרסום מדיניות פרטיות או הסתמכות על טיוטה. תאריכי החקיקה נלקחו מספר החוקים של הכנסת ומפרסומי הרשות להגנת הפרטיות; קישורים מפורטים בעמוד המקורות של הפרויקט.
+      העמוד הזה והשירות המתואר בו אינם ייעוץ משפטי, אינם חוות דעת ואינם מחליפים את חובות הארגון לפי הדין. נעם אזולאי אינו עורך דין. מומלץ להתייעץ עם עורך דין לקבלת חוות דעת משפטית, במיוחד לפני פרסום מדיניות פרטיות או הסתמכות על טיוטה. תיקון 13 לחוק הגנת הפרטיות אושר בכנסת ב-5 באוגוסט 2024, פורסם ברשומות ב-14 באוגוסט 2024, ונכנס לתוקף ב-14 באוגוסט 2025. תאריכי החקיקה נלקחו מספר החוקים של הכנסת ומפרסומי הרשות להגנת הפרטיות; קישורים מפורטים בעמוד המקורות של הפרויקט.
     </div>
   </div>
 </section>
@@ -611,13 +604,16 @@ h1 .title-13{display:inline-flex;flex-direction:row;direction:rtl;align-items:ba
       · <a href="mailto:neovex-net.com@neovex-net.com?subject=%D7%A4%D7%A0%D7%99%D7%99%D7%94%20%E2%80%94%20%D7%94%D7%AA%D7%90%D7%9E%D7%AA%20%D7%90%D7%AA%D7%A8%20%D7%9C%D7%AA%D7%99%D7%A7%D7%95%D7%9F%2013&body=%D7%A9%D7%9C%D7%95%D7%9D%20%D7%A0%D7%A2%D7%9D%2C%0A%0A%D7%90%D7%A0%D7%99%20%D7%9E%D7%A2%D7%95%D7%A0%D7%99%D7%99%D7%9F%20%D7%91%D7%91%D7%93%D7%99%D7%A7%D7%94%20%D7%A8%D7%90%D7%A9%D7%95%D7%A0%D7%99%D7%AA%20%D7%97%D7%99%D7%A0%D7%9E%D7%99%D7%AA%20%D7%9C%D7%94%D7%AA%D7%90%D7%9E%D7%94%20%D7%98%D7%9B%D7%A0%D7%99%D7%AA%20%D7%A9%D7%9C%20%D7%94%D7%90%D7%AA%D7%A8%20%D7%9C%D7%AA%D7%99%D7%A7%D7%95%D7%9F%2013.%0A%0A%D7%A9%D7%9D%20%D7%94%D7%A2%D7%A1%D7%A7%3A%0A%D7%9B%D7%AA%D7%95%D7%91%D7%AA%20%D7%94%D7%90%D7%AA%D7%A8%3A%0A%D7%A9%D7%9D%20%D7%90%D7%99%D7%A9%20%D7%A7%D7%A9%D7%A8%3A%0A">מייל</a>
       · <a href="https://wa.me/972508228996?text=%D7%A9%D7%9C%D7%95%D7%9D%2C%20%D7%90%D7%A0%D7%99%20%D7%9E%D7%A2%D7%95%D7%A0%D7%99%D7%99%D7%9F%20%D7%91%D7%91%D7%93%D7%99%D7%A7%D7%94%20%D7%A8%D7%90%D7%A9%D7%95%D7%A0%D7%99%D7%AA%20%D7%97%D7%99%D7%A0%D7%9E%D7%99%D7%AA%20%D7%9C%D7%94%D7%AA%D7%90%D7%9E%D7%94%20%D7%98%D7%9B%D7%A0%D7%99%D7%AA%20%D7%A9%D7%9C%20%D7%94%D7%90%D7%AA%D7%A8%20%D7%9C%D7%AA%D7%99%D7%A7%D7%95%D7%9F%2013.">וואטסאפ</a>
     </div>
+    <div class="foot-links">
+      <a href="#included">מה כלול</a>
+      <a href="#price">מחיר</a>
+      <a href="#privacy">פרטיות</a>
+    </div>
     <p>התאמה טכנית של אתרים · אינו ייעוץ משפטי</p>
   </div>
 </footer>
 
-<a class="fab" href="https://wa.me/972508228996?text=%D7%A9%D7%9C%D7%95%D7%9D%2C%20%D7%90%D7%A0%D7%99%20%D7%9E%D7%A2%D7%95%D7%A0%D7%99%D7%99%D7%9F%20%D7%91%D7%91%D7%93%D7%99%D7%A7%D7%94%20%D7%A8%D7%90%D7%A9%D7%95%D7%A0%D7%99%D7%AA%20%D7%97%D7%99%D7%A0%D7%9E%D7%99%D7%AA%20%D7%9C%D7%94%D7%AA%D7%90%D7%9E%D7%94%20%D7%98%D7%9B%D7%A0%D7%99%D7%AA%20%D7%A9%D7%9C%20%D7%94%D7%90%D7%AA%D7%A8%20%D7%9C%D7%AA%D7%99%D7%A7%D7%95%D7%9F%2013." aria-label="פתיחת וואטסאפ לבדיקה ראשונית">
-  <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19.05 4.91A9.82 9.82 0 0012.04 2C6.58 2 2.14 6.45 2.14 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 004.78 1.22h.01c5.46 0 9.91-4.45 9.91-9.91a9.84 9.84 0 00-2.9-7.02zm-7.01 15.24h-.01a8.2 8.2 0 01-4.18-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.2 8.2 0 01-1.26-4.38c0-4.54 3.7-8.24 8.25-8.24 2.2 0 4.27.86 5.82 2.42a8.18 8.18 0 012.43 5.83c0 4.55-3.7 8.24-8.26 8.24zm4.52-6.16c-.25-.12-1.47-.72-1.7-.81-.23-.08-.4-.12-.56.12-.17.25-.64.8-.79.97-.15.17-.29.19-.54.06-.25-.12-1.05-.39-2-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.02-.38.11-.51.11-.11.25-.29.37-.43.12-.15.17-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.35-.77-1.84-.2-.49-.4-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.23.25-.87.85-.87 2.07 0 1.22.89 2.4 1.01 2.56.12.17 1.75 2.67 4.24 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.15-1.18-.06-.1-.23-.17-.48-.29z"/></svg>
-</a>
+<a class="fab" href="https://wa.me/972508228996?text=%D7%A9%D7%9C%D7%95%D7%9D%2C%20%D7%90%D7%A0%D7%99%20%D7%9E%D7%A2%D7%95%D7%A0%D7%99%D7%99%D7%9F%20%D7%91%D7%91%D7%93%D7%99%D7%A7%D7%94%20%D7%A8%D7%90%D7%A9%D7%95%D7%A0%D7%99%D7%AA%20%D7%97%D7%99%D7%A0%D7%9E%D7%99%D7%AA%20%D7%9C%D7%94%D7%AA%D7%90%D7%9E%D7%94%20%D7%98%D7%9B%D7%A0%D7%99%D7%AA%20%D7%A9%D7%9C%20%D7%94%D7%90%D7%AA%D7%A8%20%D7%9C%D7%AA%D7%99%D7%A7%D7%95%D7%9F%2013." aria-label="פתיחת וואטסאפ לבדיקה ראשונית"><svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19.05 4.91A9.82 9.82 0 0012.04 2C6.58 2 2.14 6.45 2.14 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 004.78 1.22h.01c5.46 0 9.91-4.45 9.91-9.91a9.84 9.84 0 00-2.9-7.02zm-7.01 15.24h-.01a8.2 8.2 0 01-4.18-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.2 8.2 0 01-1.26-4.38c0-4.54 3.7-8.24 8.25-8.24 2.2 0 4.27.86 5.82 2.42a8.18 8.18 0 012.43 5.83c0 4.55-3.7 8.24-8.26 8.24zm4.52-6.16c-.25-.12-1.47-.72-1.7-.81-.23-.08-.4-.12-.56.12-.17.25-.64.8-.79.97-.15.17-.29.19-.54.06-.25-.12-1.05-.39-2-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.02-.38.11-.51.11-.11.25-.29.37-.43.12-.15.17-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.35-.77-1.84-.2-.49-.4-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.23.25-.87.85-.87 2.07 0 1.22.89 2.4 1.01 2.56.12.17 1.75 2.67 4.24 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.15-1.18-.06-.1-.23-.17-.48-.29z"/></svg></a>
 
 <script>
 (function(){
@@ -644,13 +640,15 @@ h1 .title-13{display:inline-flex;flex-direction:row;direction:rtl;align-items:ba
   var frame=document.getElementById('compare-frame');
   var b=document.getElementById('btn-before');
   var a=document.getElementById('btn-after');
-  function setAfter(on){
-    frame.classList.toggle('is-after',on);
-    b.setAttribute('aria-pressed',on?'false':'true');
-    a.setAttribute('aria-pressed',on?'true':'false');
+  if(frame&&b&&a){
+    function setAfter(on){
+      frame.classList.toggle('is-after',on);
+      b.setAttribute('aria-pressed',on?'false':'true');
+      a.setAttribute('aria-pressed',on?'true':'false');
+    }
+    b.addEventListener('click',function(){setAfter(false)});
+    a.addEventListener('click',function(){setAfter(true)});
   }
-  b.addEventListener('click',function(){setAfter(false)});
-  a.addEventListener('click',function(){setAfter(true)});
 })();
 </script>
 </body>
